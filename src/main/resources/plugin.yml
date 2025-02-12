@@ -1,0 +1,5 @@
+name: SkyRTP
+version: 1.0
+description: RTP pour SkyMC
+author: LeJazzy & Neskuik_
+main: fr.lejazzy.rtp.RTP
