@@ -23,8 +23,7 @@ public class RTPCommand extends BaseCommand {
     private final Map<UUID, Integer> rtpUses = new HashMap<>();
     private final Map<UUID, Long> lastRtpTime = new HashMap<>();
     private static final long COOLDOWN_TIME = 24 * 60 * 60 * 1000;
-    private GuiRTP guiRTP;
-
+    private final GuiRTP guiRTP = new GuiRTP();
 
     @Default
     public void onRTP(CommandSender sender) {
@@ -32,8 +31,6 @@ public class RTPCommand extends BaseCommand {
             sender.sendMessage("Cette commande ne peut être utilisée que par des joueurs.");
             return;
         }
-
-
 
         Player player = (Player) sender;
         UUID playerId = player.getUniqueId();
@@ -92,7 +89,7 @@ public class RTPCommand extends BaseCommand {
     @CommandPermission("skyrtp.gui")
     public void onGui(Player player) {
         // Ouvre le menu pour le joueur
-        player.openInventory((Inventory) guiRTP);
+        player.openInventory(guiRTP.createInventory());
     }
 
     private Location getRandomLocation(Player player) {
